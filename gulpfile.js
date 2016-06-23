@@ -8,6 +8,7 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 var webpack = require('gulp-webpack');
 var config = require('./webpack.config.js');
+var karma = require('karma').server;
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -22,7 +23,16 @@ gulp.task('webpack', function () {
     .pipe(gulp.dest('./'));
 });
 
-gulp.task('sass', function(done) {
+gulp.task('karma', function (done) {
+  karma.start({
+    configFile: __dirname + '/karma.conf.js',
+    singleRun: true
+  }, function () {
+    done();
+  });
+});
+
+gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
     .on('error', sass.logError)
@@ -35,19 +45,19 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.typescript, ['webpack']);
 });
 
-gulp.task('install', ['git-check'], function() {
+gulp.task('install', ['git-check'], function () {
   return bower.commands.install()
-    .on('log', function(data) {
+    .on('log', function (data) {
       gutil.log('bower', gutil.colors.cyan(data.id), data.message);
     });
 });
 
-gulp.task('git-check', function(done) {
+gulp.task('git-check', function (done) {
   if (!sh.which('git')) {
     console.log(
       '  ' + gutil.colors.red('Git is not installed.'),
