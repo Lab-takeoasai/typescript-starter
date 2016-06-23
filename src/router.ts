@@ -1,3 +1,8 @@
+import ChatsCtrl from "./chat/chats.controller";
+import ChatDetailCtrl from "./chat/chatDetail.controller";
+import DashCtrl from "./dashboard/dashboard.controller";
+import AccountCtrl from "./account/account.controller";
+
 angular.module("router", ["ionic"])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -22,7 +27,8 @@ angular.module("router", ["ionic"])
     views: {
       "tab-dash": {
         templateUrl: "templates/tab-dash.html",
-        controller: "DashCtrl"
+        controller: DashCtrl,
+        controllerAs: "vm",
       }
     }
   })
@@ -32,7 +38,7 @@ angular.module("router", ["ionic"])
       views: {
         "tab-chats": {
           templateUrl: "templates/tab-chats.html",
-          controller: "ChatsCtrl",
+          controller: ChatsCtrl,
           controllerAs: "vm",
         }
       }
@@ -42,7 +48,8 @@ angular.module("router", ["ionic"])
       views: {
         "tab-chats": {
           templateUrl: "templates/chat-detail.html",
-          controller: "ChatDetailCtrl"
+          controller: ChatDetailCtrl,
+          controllerAs: "vm",
         }
       }
     })
@@ -52,7 +59,8 @@ angular.module("router", ["ionic"])
     views: {
       "tab-account": {
         templateUrl: "templates/tab-account.html",
-        controller: "AccountCtrl"
+        controller: AccountCtrl,
+        controllerAs: "vm",
       }
     }
   });
