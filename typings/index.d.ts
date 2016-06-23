@@ -1,3 +1,4 @@
+/// <reference path="globals/angular-mocks/index.d.ts" />
 /// <reference path="globals/angular/index.d.ts" />
 /// <reference path="globals/chai/index.d.ts" />
 /// <reference path="globals/cordova-ionic/index.d.ts" />
