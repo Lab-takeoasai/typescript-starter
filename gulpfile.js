@@ -52,7 +52,7 @@ gulp.task('sass', function (done) {
 
 gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.typescript, ['webpack']);
+  gulp.watch(paths.typescript, ['webpack', 'karma']);
 });
 
 gulp.task('install', ['git-check'], function () {
