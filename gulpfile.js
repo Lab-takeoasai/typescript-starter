@@ -9,11 +9,16 @@ var sh = require('shelljs');
 var webpack = require('gulp-webpack');
 var config = require('./webpack.config.js');
 var karma = require('karma').server;
+const del = require('del');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
   typescript: ['./src/**/*.ts']
 };
+
+gulp.task('clean', function () {
+  del(['www/js/*.js', 'www/css/*.css', 'plugins', 'platforms', 'node_modules'])
+});
 
 gulp.task('default', ['sass', 'webpack']);
 
