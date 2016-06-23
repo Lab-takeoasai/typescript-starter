@@ -1,8 +1,9 @@
+import t from "./chats.service";
 import { assert } from "chai";
 import "../app";
 
 describe("Chats service ", () => {
-  let Chats;
+  let Chats: t;
   beforeEach(angular.mock.module("starter"));
   beforeEach(inject(function (_Chats_) {
     Chats = _Chats_;
