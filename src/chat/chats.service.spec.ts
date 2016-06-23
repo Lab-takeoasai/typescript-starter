@@ -1,16 +1,22 @@
 import { assert } from "chai";
 import "../app";
 
-describe("this is", () => {
+describe("Chats service ", () => {
   let Chats;
   beforeEach(angular.mock.module("starter"));
   beforeEach(inject(function (_Chats_) {
     Chats = _Chats_;
   }));
 
-  it("always true", () => {
-    console.log("here", Chats.all());
-
+  it("(this is always true)", () => {
     assert.isNull(null);
+  });
+
+  it("has 5 columns", () => {
+    assert.equal(5, Chats.all().length);
+  });
+
+  it(" has a man whose name is 'Max Lynx' in the second", () => {
+    assert.equal("Max Lynx", Chats.get(1).name);
   });
 });
