@@ -32,7 +32,8 @@ angular.module("router", ["ionic"])
       views: {
         "tab-chats": {
           templateUrl: "templates/tab-chats.html",
-          controller: "ChatsCtrl"
+          controller: "ChatsCtrl",
+          controllerAs: "vm",
         }
       }
     })
