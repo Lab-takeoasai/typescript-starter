@@ -6,6 +6,7 @@
     "cordova-ionic/plugins/keyboard": "registry:dt/cordova-ionic/plugins/keyboard#0.0.0+20160317120654",
     "cordova/plugins/statusbar": "registry:dt/cordova/plugins/statusbar#0.0.0+20160316155526",
     "ionic": "registry:dt/ionic#0.0.0+20160501155303",
-    "jquery": "registry:dt/jquery#1.10.0+20160620094458"
+    "jquery": "registry:dt/jquery#1.10.0+20160620094458",
+    "mocha": "registry:dt/mocha#2.2.5+20160619032855"
   }
 }

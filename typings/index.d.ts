@@ -5,3 +5,4 @@
 /// <reference path="globals/cordova/plugins/statusbar/index.d.ts" />
 /// <reference path="globals/ionic/index.d.ts" />
 /// <reference path="globals/jquery/index.d.ts" />
+/// <reference path="globals/mocha/index.d.ts" />
