@@ -1,4 +1,5 @@
 /// <reference path="globals/angular/index.d.ts" />
+/// <reference path="globals/chai/index.d.ts" />
 /// <reference path="globals/cordova-ionic/index.d.ts" />
 /// <reference path="globals/cordova-ionic/plugins/keyboard/index.d.ts" />
 /// <reference path="globals/cordova/index.d.ts" />
