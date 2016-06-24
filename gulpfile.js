@@ -7,9 +7,7 @@ var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
 var nodeCLI = require("shelljs-nodecli");
-var webpack = require('gulp-webpack');
-var config = require('./webpack.config.js');
-var karma = require('karma').server;
+var replace = require('gulp-replace-task');
 var del = require('del');
 var argv = require('yargs')
   .option('env', { alias: 'e', describe: 'debug or release' })
@@ -26,19 +24,19 @@ gulp.task('clean', function () {
 
 gulp.task('default', ['sass', 'webpack']);
 
+var webpack = require('gulp-webpack');
 gulp.task('webpack', function () {
   gulp.src(paths.typescript)
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('./'));
 });
 
+var Karma = require('karma').Server;
 gulp.task('karma', function (done) {
-  karma.start({
+  new Karma({
     configFile: __dirname + '/karma.conf.js',
-    singleRun: true
-  }, function () {
-    done();
-  });
+    singleRun: false
+  }).start();
 });
 
 gulp.task('sass', function (done) {
@@ -56,7 +54,7 @@ gulp.task('sass', function (done) {
 
 gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.typescript, ['webpack', 'karma']);
+  gulp.watch(paths.typescript, ['webpack']);
 });
 
 gulp.task('build', function () {

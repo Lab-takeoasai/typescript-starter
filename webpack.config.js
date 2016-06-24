@@ -10,6 +10,7 @@ module.exports = {
     root: [path.join(__dirname, 'node_modules')],
     extensions: ['', '.ts', '.webpack.js', '.web.js', '.js']
   },
+  devtool: 'inline-source-map',
   module: {
     loaders: [
       { test: /\.ts$/, loaders: ['ng-annotate', 'ts-loader'] }

@@ -1,7 +1,7 @@
 {
   "name": "typescript-starter",
   "app_id": "",
-  "gulpStartupTasks": ["webpack", "sass", "watch"],
+  "gulpStartupTasks": ["default", "watch"],
   "watchPatterns": [
     "www/**/*",
     "!www/src/**/*",
