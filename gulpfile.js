@@ -7,7 +7,7 @@ var paths = {
 };
 
 /* tasks */
-gulp.task('default', ['sass', 'webpack', 'karma']);
+gulp.task('default', ['sass', 'webpack']);
 gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.typescript, ['webpack']);
@@ -50,16 +50,17 @@ gulp.task('sass', function (done) {
 });
 
 var nodeCLI = require("shelljs-nodecli");
-gulp.task('build', function () {
+gulp.task('build', ['webpack'], function () {
   var target = (process.env.TARGET === 'ios') ? 'ios' : 'android';
-  gulp.src(paths.typescript)
-    .pipe(webpack(config))
-    .pipe(gulp.dest('./'))
-    .on('end', function () {
-      nodeCLI.exec("ionic", "build", target, function (code, output) {
-        // do after exec
-      });
-    })
+  nodeCLI.exec("ionic", "build", target, function (code, output) {
+    // do after exec
+  });
+});
+gulp.task('run', ['webpack'], function () {
+  var target = (process.env.TARGET === 'ios') ? 'ios' : 'android';
+  nodeCLI.exec("ionic", "run", target, "-lcs", function (code, output) {
+    // do after exec
+  });
 });
 
 var sh = require('shelljs');

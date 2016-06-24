@@ -4,8 +4,7 @@ export default class ChatController {
     "ngInject";
     this.chats = Chats.all();
 
-    console.log("@@imgUrl");
-
+    console.log("@@imgUrl//");
   }
 
   public remove(chat) {
