@@ -1,21 +1,10 @@
 var gulp = require('gulp');
-var argv = require('yargs')
-  .option('env', { alias: 'e', describe: 'debug or release' })
-  .option('target', { alias: 't', describe: 'ios or android' }).argv;
+var config = require('./webpack.config.js');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
   typescript: ['./src/**/*.ts']
 };
-
-var replaces = {
-  debug: [
-    { search: '@@imgUrl', replace: 'whatisisisisis' }
-  ],
-  release: [
-    { search: '@@imgUrl', replace: 'release' }
-  ]
-}
 
 /* tasks */
 gulp.task('default', ['sass', 'webpack', 'karma']);
@@ -23,21 +12,6 @@ gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.typescript, ['webpack']);
 });
-
-var config = function () {
-  var env = (argv.env === 'release') ? 'release' : 'debug';
-  var webpackConfig = require('./webpack.config.js');
-  webpackConfig.debug = (env === 'debug');
-  webpackConfig.cache = (env === 'debug');
-  webpackConfig.module.loaders.push({
-    test: /\.ts$/,
-    loader: 'string-replace',
-    query: {
-      multiple: replaces[env]
-    }
-  });
-  return webpackConfig;
-};
 
 var del = require('del');
 gulp.task('clean', function () {
@@ -47,7 +21,7 @@ gulp.task('clean', function () {
 var webpack = require('gulp-webpack');
 gulp.task('webpack', function () {
   gulp.src(paths.typescript)
-    .pipe(webpack(config()))
+    .pipe(webpack(config))
     .pipe(gulp.dest('./'));
 });
 
@@ -77,10 +51,9 @@ gulp.task('sass', function (done) {
 
 var nodeCLI = require("shelljs-nodecli");
 gulp.task('build', function () {
-  var target = (argv.target === 'ios') ? 'ios' : 'android';
-
+  var target = (process.env.TARGET === 'ios') ? 'ios' : 'android';
   gulp.src(paths.typescript)
-    .pipe(webpack(config()))
+    .pipe(webpack(config))
     .pipe(gulp.dest('./'))
     .on('end', function () {
       nodeCLI.exec("ionic", "build", target, function (code, output) {
