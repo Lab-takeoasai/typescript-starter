@@ -28,7 +28,7 @@ gulp.task('default', ['sass', 'webpack']);
 
 gulp.task('webpack', function () {
   gulp.src(paths.typescript)
-    .pipe(webpack(config))
+    .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('./'));
 });
 
@@ -64,12 +64,6 @@ gulp.task('build', function () {
   var env = argv.env || "debug";
   nodeCLI.exec("ionic", "build", target);
 });
-gulp.task('run', function () {
-  var target = argv.target || "ios";
-  var env = argv.env || "debug";
-  nodeCLI.exec("ionic", "run", target, " -l -c -s");
-});
-
 gulp.task('install', ['git-check'], function () {
   return bower.commands.install()
     .on('log', function (data) {
