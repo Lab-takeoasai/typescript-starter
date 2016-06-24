@@ -1,7 +1,7 @@
 {
   "name": "typescript-starter",
   "app_id": "",
-  "gulpStartupTasks": ["default", "watch"],
+  "gulpStartupTasks": ["default", "watch", "karma"],
   "watchPatterns": [
     "www/**/*",
     "!www/src/**/*",
