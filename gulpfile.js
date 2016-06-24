@@ -18,7 +18,7 @@ var replaces = {
 }
 
 /* tasks */
-gulp.task('default', ['sass', 'webpack']);
+gulp.task('default', ['sass', 'webpack', 'karma']);
 gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.typescript, ['webpack']);
