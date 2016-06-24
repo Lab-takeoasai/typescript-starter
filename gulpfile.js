@@ -1,14 +1,4 @@
 var gulp = require('gulp');
-var gutil = require('gulp-util');
-var bower = require('bower');
-var concat = require('gulp-concat');
-var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
-var rename = require('gulp-rename');
-var sh = require('shelljs');
-var nodeCLI = require("shelljs-nodecli");
-var replace = require('gulp-replace-task');
-var del = require('del');
 var argv = require('yargs')
   .option('env', { alias: 'e', describe: 'debug or release' })
   .option('target', { alias: 't', describe: 'ios or android' }).argv;
@@ -18,16 +8,46 @@ var paths = {
   typescript: ['./src/**/*.ts']
 };
 
+var replaces = {
+  debug: [
+    { search: '@@imgUrl', replace: 'whatisisisisis' }
+  ],
+  release: [
+    { search: '@@imgUrl', replace: 'release' }
+  ]
+}
+
+/* tasks */
+gulp.task('default', ['sass', 'webpack']);
+gulp.task('watch', function () {
+  gulp.watch(paths.sass, ['sass']);
+  gulp.watch(paths.typescript, ['webpack']);
+});
+
+var config = function () {
+  var env = (argv.env === 'release') ? 'release' : 'debug';
+  var webpackConfig = require('./webpack.config.js');
+  webpackConfig.debug = (env === 'debug');
+  webpackConfig.cache = (env === 'debug');
+  webpackConfig.module.loaders.push({
+    test: /\.ts$/,
+    loader: 'string-replace',
+    query: {
+      multiple: replaces[env]
+    }
+  });
+  return webpackConfig;
+};
+
+var del = require('del');
 gulp.task('clean', function () {
   del(['www/js/*.js', 'www/css/*.css', 'plugins', 'platforms', 'node_modules'])
 });
 
-gulp.task('default', ['sass', 'webpack']);
-
 var webpack = require('gulp-webpack');
 gulp.task('webpack', function () {
   gulp.src(paths.typescript)
-    .pipe(webpack(require('./webpack.config.js')))
+    .pipe(webpack(config()))
     .pipe(gulp.dest('./'));
 });
 
@@ -39,6 +59,9 @@ gulp.task('karma', function (done) {
   }).start();
 });
 
+var sass = require('gulp-sass');
+var minifyCss = require('gulp-minify-css');
+var rename = require('gulp-rename');
 gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
@@ -52,16 +75,23 @@ gulp.task('sass', function (done) {
     .on('end', done);
 });
 
-gulp.task('watch', function () {
-  gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.typescript, ['webpack']);
+var nodeCLI = require("shelljs-nodecli");
+gulp.task('build', function () {
+  var target = (argv.target === 'ios') ? 'ios' : 'android';
+
+  gulp.src(paths.typescript)
+    .pipe(webpack(config()))
+    .pipe(gulp.dest('./'))
+    .on('end', function () {
+      nodeCLI.exec("ionic", "build", target, function (code, output) {
+        // do after exec
+      });
+    })
 });
 
-gulp.task('build', function () {
-  var target = argv.target || "ios";
-  var env = argv.env || "debug";
-  nodeCLI.exec("ionic", "build", target);
-});
+var sh = require('shelljs');
+var bower = require('bower');
+var gutil = require('gulp-util');
 gulp.task('install', ['git-check'], function () {
   return bower.commands.install()
     .on('log', function (data) {
