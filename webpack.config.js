@@ -13,7 +13,16 @@ module.exports = {
   devtool: 'inline-source-map',
   module: {
     loaders: [
-      { test: /\.ts$/, loaders: ['ng-annotate', 'ts-loader'] }
+      { test: /\.ts$/, loaders: ['ng-annotate', 'ts-loader'] },
+      {
+        test: /\.ts$/,
+        loader: 'string-replace',
+        query: {
+          multiple: [
+             { search: '@@imgUrl', replace: 'whatisisisisis' }
+          ]
+        }
+      }
     ]
   }
 }
