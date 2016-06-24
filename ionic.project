@@ -1,4 +1,10 @@
 {
   "name": "typescript-starter",
-  "app_id": ""
+  "app_id": "",
+  "gulpStartupTasks": ["webpack", "sass", "watch"],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/src/**/*",
+    "!www/css/**/*.map"
+  ]
 }
