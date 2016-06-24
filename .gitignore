@@ -6,6 +6,7 @@
 node_modules/
 platforms/
 plugins/
+.bundle/
 
 www/js/*.js
 www/css/*.css
