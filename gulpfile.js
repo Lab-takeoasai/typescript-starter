@@ -6,10 +6,14 @@ var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
 var sh = require('shelljs');
+var nodeCLI = require("shelljs-nodecli");
 var webpack = require('gulp-webpack');
 var config = require('./webpack.config.js');
 var karma = require('karma').server;
-const del = require('del');
+var del = require('del');
+var argv = require('yargs')
+  .option('env', { alias: 'e', describe: 'debug or release' })
+  .option('target', { alias: 't', describe: 'ios or android' }).argv;
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -31,7 +35,7 @@ gulp.task('webpack', function () {
 gulp.task('karma', function (done) {
   karma.start({
     configFile: __dirname + '/karma.conf.js',
-    singleRun: false
+    singleRun: true
   }, function () {
     done();
   });
@@ -53,6 +57,17 @@ gulp.task('sass', function (done) {
 gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
   gulp.watch(paths.typescript, ['webpack', 'karma']);
+});
+
+gulp.task('build', function () {
+  var target = argv.target || "ios";
+  var env = argv.env || "debug";
+  nodeCLI.exec("ionic", "build", target);
+});
+gulp.task('run', function () {
+  var target = argv.target || "ios";
+  var env = argv.env || "debug";
+  nodeCLI.exec("ionic", "run", target, " -l -c -s");
 });
 
 gulp.task('install', ['git-check'], function () {
