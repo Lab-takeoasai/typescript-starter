@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.app.starter" version="0.0.2">
-  <name>App</name>
+  <name>AppDebug</name>
   <description>
         An Ionic Framework and Cordova project.
     </description>
@@ -19,6 +19,12 @@
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
+  <!-- android os のサポート対象。sdk.ver-os.ver対応表は「api level version」等でググる-->
+  <preference name="android-minSdkVersion" value="16"/>
+  <!-- ios のサポート対象。こちらは単にiosのver指定 -->
+  <preference name="deployment-target" value="7.0"/>
+  <!-- ios でiphone/ipad/universal(両方)のいずれとして出すか -->
+  <preference name="target-device" value="universal"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
