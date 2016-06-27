@@ -10,7 +10,7 @@ describe("Chat controller ", () => {
     assert.isNull(null);
   });
 
-  it("'s title is Chats", () => {
+  it("'s title is 'Chats'", () => {
     return browser.getTitle().then(title => {
       assert.equal(title, "Chats");
     });

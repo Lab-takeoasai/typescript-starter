@@ -5,7 +5,7 @@ import "../app";
 describe("Chats service ", () => {
   let Chats: t;
   beforeEach(angular.mock.module("starter"));
-  beforeEach(inject(function (_Chats_) {
+  beforeEach(inject(function (_Chats_, _$httpBackend_) {
     Chats = _Chats_;
   }));
 
