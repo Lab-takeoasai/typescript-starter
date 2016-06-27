@@ -3,7 +3,7 @@
   "version": "1.1.1",
   "description": "An Ionic project",
   "scripts": {
-    "postinstall": "ionic state restore && typings install"
+    "postinstall": "ionic state restore && typings install && bundle install --path=.bundle/"
   },
   "dependencies": {
     "chai": "^3.5.0",
