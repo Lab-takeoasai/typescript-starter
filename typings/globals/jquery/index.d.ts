@@ -52,7 +52,7 @@ interface JQueryAjaxSettings {
      */
     dataFilter? (data: any, ty: any): any;
     /**
-     * The type of data that you're expecting back from the server. If none is specified, jQuery will try to infer it based on the MIME type of the response (an XML MIME type will yield XML, in 1.4 JSON will yield a JavaScript object, in 1.4 script will execute the script, and anything else will be returned as a string). 
+     * The type of data that you're expecting back from the server. If none is specified, jQuery will try to infer it based on the MIME type of the response (an XML MIME type will yield XML, in 1.4 JSON will yield a JavaScript object, in 1.4 script will execute the script, and anything else will be returned as a string).
      */
     dataType?: string;
     /**
@@ -146,11 +146,11 @@ interface JQueryAjaxSettings {
  */
 interface JQueryXHR extends XMLHttpRequest, JQueryPromise<any> {
     /**
-     * The .overrideMimeType() method may be used in the beforeSend() callback function, for example, to modify the response content-type header. As of jQuery 1.5.1, the jqXHR object also contains the overrideMimeType() method (it was available in jQuery 1.4.x, as well, but was temporarily removed in jQuery 1.5). 
+     * The .overrideMimeType() method may be used in the beforeSend() callback function, for example, to modify the response content-type header. As of jQuery 1.5.1, the jqXHR object also contains the overrideMimeType() method (it was available in jQuery 1.4.x, as well, but was temporarily removed in jQuery 1.5).
      */
     overrideMimeType(mimeType: string): any;
     /**
-     * Cancel the request. 
+     * Cancel the request.
      *
      * @param statusText A string passed as the textStatus parameter for the done callback. Default value: "canceled"
      */
@@ -175,13 +175,13 @@ interface JQueryXHR extends XMLHttpRequest, JQueryPromise<any> {
 interface JQueryCallback {
     /**
      * Add a callback or a collection of callbacks to a callback list.
-     * 
+     *
      * @param callbacks A function, or array of functions, that are to be added to the callback list.
      */
     add(callbacks: Function): JQueryCallback;
     /**
      * Add a callback or a collection of callbacks to a callback list.
-     * 
+     *
      * @param callbacks A function, or array of functions, that are to be added to the callback list.
      */
     add(callbacks: Function[]): JQueryCallback;
@@ -203,7 +203,7 @@ interface JQueryCallback {
 
     /**
      * Call all of the callbacks with the given arguments
-     * 
+     *
      * @param arguments The argument or list of arguments to pass back to the callback list.
      */
     fire(...arguments: any[]): JQueryCallback;
@@ -215,7 +215,7 @@ interface JQueryCallback {
 
     /**
      * Call all callbacks in a list with the given context and arguments.
-     * 
+     *
      * @param context A reference to the context in which the callbacks in the list should be fired.
      * @param arguments An argument, or array of arguments, to pass to the callbacks in the list.
      */
@@ -223,7 +223,7 @@ interface JQueryCallback {
 
     /**
      * Determine whether a supplied callback is in a list
-     * 
+     *
      * @param callback The callback to search for.
      */
     has(callback: Function): boolean;
@@ -240,13 +240,13 @@ interface JQueryCallback {
 
     /**
      * Remove a callback or a collection of callbacks from a callback list.
-     * 
+     *
      * @param callbacks A function, or array of functions, that are to be removed from the callback list.
      */
     remove(callbacks: Function): JQueryCallback;
     /**
      * Remove a callback or a collection of callbacks from a callback list.
-     * 
+     *
      * @param callbacks A function, or array of functions, that are to be removed from the callback list.
      */
     remove(callbacks: Function[]): JQueryCallback;
@@ -258,7 +258,7 @@ interface JQueryCallback {
 interface JQueryGenericPromise<T> {
     /**
      * Add handlers to be called when the Deferred object is resolved, rejected, or still in progress.
-     * 
+     *
      * @param doneFilter A function that is called when the Deferred is resolved.
      * @param failFilter An optional function that is called when the Deferred is rejected.
      */
@@ -266,7 +266,7 @@ interface JQueryGenericPromise<T> {
 
     /**
      * Add handlers to be called when the Deferred object is resolved, rejected, or still in progress.
-     * 
+     *
      * @param doneFilter A function that is called when the Deferred is resolved.
      * @param failFilter An optional function that is called when the Deferred is rejected.
      */
@@ -294,28 +294,28 @@ interface JQueryPromise<T> extends JQueryGenericPromise<T> {
     state(): string;
     /**
      * Add handlers to be called when the Deferred object is either resolved or rejected.
-     * 
+     *
      * @param alwaysCallbacks1 A function, or array of functions, that is called when the Deferred is resolved or rejected.
      * @param alwaysCallbacks2 Optional additional functions, or arrays of functions, that are called when the Deferred is resolved or rejected.
      */
     always(alwaysCallback1?: JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[], ...alwaysCallbacksN: Array<JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[]>): JQueryPromise<T>;
     /**
      * Add handlers to be called when the Deferred object is resolved.
-     * 
+     *
      * @param doneCallbacks1 A function, or array of functions, that are called when the Deferred is resolved.
      * @param doneCallbacks2 Optional additional functions, or arrays of functions, that are called when the Deferred is resolved.
      */
     done(doneCallback1?: JQueryPromiseCallback<T>|JQueryPromiseCallback<T>[], ...doneCallbackN: Array<JQueryPromiseCallback<T>|JQueryPromiseCallback<T>[]>): JQueryPromise<T>;
     /**
      * Add handlers to be called when the Deferred object is rejected.
-     * 
+     *
      * @param failCallbacks1 A function, or array of functions, that are called when the Deferred is rejected.
      * @param failCallbacks2 Optional additional functions, or arrays of functions, that are called when the Deferred is rejected.
      */
     fail(failCallback1?: JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[], ...failCallbacksN: Array<JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[]>): JQueryPromise<T>;
     /**
      * Add handlers to be called when the Deferred object generates progress notifications.
-     * 
+     *
      * @param progressCallbacks A function, or array of functions, to be called when the Deferred generates progress notifications.
      */
     progress(progressCallback1?: JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[], ...progressCallbackN: Array<JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[]>): JQueryPromise<T>;
@@ -334,14 +334,14 @@ interface JQueryDeferred<T> extends JQueryGenericPromise<T> {
     state(): string;
     /**
      * Add handlers to be called when the Deferred object is either resolved or rejected.
-     * 
+     *
      * @param alwaysCallbacks1 A function, or array of functions, that is called when the Deferred is resolved or rejected.
      * @param alwaysCallbacks2 Optional additional functions, or arrays of functions, that are called when the Deferred is resolved or rejected.
      */
     always(alwaysCallback1?: JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[], ...alwaysCallbacksN: Array<JQueryPromiseCallback<any>|JQueryPromiseCallback<any>[]>): JQueryDeferred<T>;
     /**
      * Add handlers to be called when the Deferred object is resolved.
-     * 
+     *
      * @param doneCallbacks1 A function, or array of functions, that are called when the Deferred is resolved.
      * @param doneCallbacks2 Optional additional functions, or arrays of functions, that are called when the Deferred is resolved.
      */
@@ -3213,5 +3213,5 @@ interface JQuery {
 declare module "jquery" {
     export = $;
 }
-declare var jQuery: JQueryStatic;
-declare var $: JQueryStatic;
+// declare var jQuery: JQueryStatic;
+// declare var $: JQueryStatic;
