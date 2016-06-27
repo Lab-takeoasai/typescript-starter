@@ -1,10 +1,10 @@
 export default class ChatController {
   public chats;
-  constructor($scope, private Chats) {
+  constructor($scope, apiUrl, private Chats) {
     "ngInject";
     this.chats = Chats.all();
 
-    console.log("@@imgUrl//");
+    console.log(apiUrl);
   }
 
   public remove(chat) {

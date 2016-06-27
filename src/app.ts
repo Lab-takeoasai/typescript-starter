@@ -9,6 +9,7 @@ import "./router";
 // "starter.services" is found in services.js
 // "starter.controllers" is found in controllers.js
 angular.module("starter", ["ionic", "router", "starter.services"])
+  .constant("apiUrl", "@@apiUrl")
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
