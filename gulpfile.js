@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var config = require('./webpack.config.js');
+var replacements = require('./replacements.config');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -18,10 +18,28 @@ gulp.task('clean', function () {
   del(['www/js/*.js', 'www/css/*.css', 'plugins', 'platforms', 'node_modules'])
 });
 
+var jexitor = require('gulp-json-editor');
+var xmlEditor = require('gulp-xml-editor');
+gulp.task('replace', function () {
+  var env = {};
+  replacements[process.env.ENV || 'debug'].map((value, index) => {
+    env[value.search] = value.replace;
+  });
+  gulp.src("./config.xml")
+    .pipe(xmlEditor([
+      { path: '//xmlns:name', text: env["@@xmlns:name"] },
+      { path: '//xmlns:access', attr: { origin: env["@@xmlns:access"] } },
+      { path: '//xmlns:allow-intent', attr: { href: env["@@xmlns:allow-intent"] } },
+      { path: '//xmlns:allow-navigation', attr: { href: env["@@xmlns:allow-navigation"] } },
+      { path: '//xmlns:widget[@id]', attr: { id: env["@@xmlns:widget[@id]"], version: env["@@xmlns:widget[@version]"] } },
+    ], 'http://www.w3.org/ns/widgets'))
+    .pipe(gulp.dest("./"));
+});
+
 var webpack = require('gulp-webpack');
-gulp.task('webpack', function () {
+gulp.task('webpack', ['replace'], function () {
   gulp.src(paths.typescript)
-    .pipe(webpack(config))
+    .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('./'));
 });
 
