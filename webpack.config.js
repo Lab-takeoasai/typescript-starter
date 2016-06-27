@@ -1,3 +1,4 @@
+var webpack = require("webpack");
 var path = require('path');
 var replacements = require('./replacements.config');
 module.exports = {
@@ -23,5 +24,8 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: /*(process.env.ENV !== 'release') ? [] :*/ [
+    new webpack.optimize.UglifyJsPlugin({minimize: true})  // minify
+  ]
 }
