@@ -6,5 +6,12 @@
     "www/**/*",
     "!www/src/**/*",
     "!www/css/**/*.map"
+  ],
+  "proxies": [
+    {
+      "path": "/api/",
+      "rejectUnauthorized": false,
+      "proxyUrl": "https://stage.sutarepi.net/api/"
+    }
   ]
 }
