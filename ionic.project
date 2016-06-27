@@ -1,17 +1,19 @@
 {
   "name": "typescript-starter",
   "app_id": "",
-  "gulpStartupTasks": ["default", "watch", "karma"],
+  "gulpStartupTasks": [
+    "default",
+    "watch",
+    "karma"
+  ],
   "watchPatterns": [
     "www/**/*",
     "!www/src/**/*",
     "!www/css/**/*.map"
   ],
-  "proxies": [
-    {
-      "path": "/api/",
-      "rejectUnauthorized": false,
-      "proxyUrl": "https://stage.sutarepi.net/api/"
-    }
-  ]
+  "proxies": [{
+    "path": "/api/",
+    "rejectUnauthorized": false,
+    "proxyUrl": "https://stage.sutarepi.net/api/"
+  }]
 }

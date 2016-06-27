@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var replacements = require('./replacements.config');
+var proxies = require('./proxies.config');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
@@ -18,7 +19,7 @@ gulp.task('clean', function () {
   del(['www/js/*.js', 'www/css/*.css', 'plugins', 'platforms', 'node_modules'])
 });
 
-var jexitor = require('gulp-json-editor');
+var jsonEditor = require('gulp-json-editor');
 var xmlEditor = require('gulp-xml-editor');
 gulp.task('replace', function () {
   var env = {};
@@ -33,6 +34,12 @@ gulp.task('replace', function () {
       { path: '//xmlns:allow-navigation', attr: { href: env["@@xmlns:allow-navigation"] } },
       { path: '//xmlns:widget[@id]', attr: { id: env["@@xmlns:widget[@id]"], version: env["@@xmlns:widget[@version]"] } },
     ], 'http://www.w3.org/ns/widgets'))
+    .pipe(gulp.dest("./"));
+
+  gulp.src("./ionic.project")
+    .pipe(jsonEditor({
+      'proxies': proxies[process.env.ENV || 'debug']
+    }))
     .pipe(gulp.dest("./"));
 });
 
