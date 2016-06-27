@@ -58,6 +58,15 @@ gulp.task('karma', function (done) {
   }).start();
 });
 
+var protractor = require("gulp-protractor").protractor;
+gulp.task('protractor', function (done) {
+  gulp.src([])
+    .pipe(protractor({
+      configFile: "./protractor.config.js"
+    }))
+    .on('error', function (e) { throw e })
+});
+
 var sass = require('gulp-sass');
 var minifyCss = require('gulp-minify-css');
 var rename = require('gulp-rename');
