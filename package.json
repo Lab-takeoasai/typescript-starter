@@ -41,15 +41,7 @@
     "cordova-plugin-whitelist",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
-    "ionic-plugin-keyboard",
-    {
-      "variables": {
-        "CRASHLYTICS_API_SECRET": "secret",
-        "CRASHLYTICS_API_KEY": "apikey"
-      },
-      "locator": "https://github.com/vianneyniji/cordova-fabric-crashlytics-plugin",
-      "id": "org.apache.cordova.crashlytics"
-    }
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
     "android",
