@@ -4,7 +4,9 @@
   "version": "1.1.1",
   "description": "An Ionic project",
   "scripts": {
-    "test": "gulp build && karma start ./karma.conf.js --single-run && gulp protractor",
+    "test:e2e": "./node_modules/protractor/bin/webdriver-manager start && gulp protractor",
+    "test:unit": "karma start ./karma.conf.js --single-run",
+    "test": "gulp build && npm test:unit && npm test:e2e",
     "postinstall": "ionic state restore && typings install && bundle install --path=.bundle/ && ./node_modules/protractor/bin/webdriver-manager update"
   },
   "dependencies": {
