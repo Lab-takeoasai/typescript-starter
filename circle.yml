@@ -10,8 +10,7 @@ machine:
   ruby:
     version: 2.3.1
   node:
-    version: 6.1.0
+    version: 5.7.0
   post:
-    - npm install -g node-gyp
     - npm install -g ionic cordova
   timezone: Asia/Tokyo
