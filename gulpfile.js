@@ -92,7 +92,7 @@ gulp.task('build', ['webpack'], function () {
 });
 gulp.task('run', ['webpack'], function () {
   var target = (process.env.TARGET === 'ios') ? 'ios' : 'android';
-  nodeCLI.exec("ionic", "run", target, "-lcs", function (code, output) {
+  nodeCLI.exec("ionic", "run", target, function (code, output) {
     // do after exec
   });
 });
