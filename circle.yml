@@ -1,2 +1,6 @@
 machine:
+  node:
+    version: 5.9.1
+  post:
+    - npm install -g ionic cordova
   timezone: Asia/Tokyo
