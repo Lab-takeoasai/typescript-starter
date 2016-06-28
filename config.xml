@@ -16,18 +16,14 @@
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="SplashScreenDelay" value="2000"/>
   <preference name="FadeSplashScreenDuration" value="2000"/>
-  <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="SplashScreen" value="screen"/>
-  <!-- android os のサポート対象。sdk.ver-os.ver対応表は「api level version」等でググる-->
-  <preference name="android-minSdkVersion" value="16"/>
-  <!-- ios のサポート対象。こちらは単にiosのver指定 -->
-  <preference name="deployment-target" value="7.0"/>
-  <!-- ios でiphone/ipad/universal(両方)のいずれとして出すか -->
-  <preference name="target-device" value="universal"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
+  <preference name="android-minSdkVersion" value="16"/>
+  <preference name="deployment-target" value="7.0"/>
+  <preference name="target-device" value="universal"/>
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
