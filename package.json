@@ -6,7 +6,7 @@
   "scripts": {
     "test:e2e": "./node_modules/protractor/bin/webdriver-manager start && gulp protractor",
     "test:unit": "karma start ./karma.conf.js --single-run",
-    "test": "gulp build && npm test:unit && npm test:e2e",
+    "test": "gulp build && npm run test:unit",
     "postinstall": "ionic state restore && typings install && bundle install --path=.bundle/ && ./node_modules/protractor/bin/webdriver-manager update"
   },
   "dependencies": {
