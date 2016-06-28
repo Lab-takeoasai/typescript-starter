@@ -28,7 +28,7 @@ angular.module("router", ["ionic"])
           "tab-dash": {
             templateUrl: "templates/tab-dash.html",
             controller: DashCtrl,
-            controllerAs: "vm",
+            controllerAs: "$ctrl",
           }
         }
       })
@@ -39,7 +39,7 @@ angular.module("router", ["ionic"])
           "tab-chats": {
             templateUrl: "templates/tab-chats.html",
             controller: ChatsCtrl,
-            controllerAs: "vm",
+            controllerAs: "$ctrl",
           }
         }
       })
@@ -49,7 +49,7 @@ angular.module("router", ["ionic"])
           "tab-chats": {
             templateUrl: "templates/chat-detail.html",
             controller: ChatDetailCtrl,
-            controllerAs: "vm",
+            controllerAs: "$ctrl",
           }
         }
       })
@@ -60,7 +60,7 @@ angular.module("router", ["ionic"])
           "tab-account": {
             templateUrl: "templates/tab-account.html",
             controller: AccountCtrl,
-            controllerAs: "vm",
+            controllerAs: "$ctrl",
           }
         }
       });
