@@ -12,5 +12,6 @@ machine:
   node:
     version: 6.1.0
   post:
+    - npm install -g node-gyp
     - npm install -g ionic cordova
   timezone: Asia/Tokyo
