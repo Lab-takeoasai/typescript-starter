@@ -4,6 +4,7 @@
   "version": "1.1.1",
   "description": "An Ionic project",
   "scripts": {
+    "test": "gulp build && gulp karma && gulp protractor",
     "postinstall": "ionic state restore && typings install && bundle install --path=.bundle/"
   },
   "dependencies": {
