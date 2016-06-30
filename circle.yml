@@ -14,3 +14,6 @@ machine:
   post:
     - npm install -g ionic cordova
   timezone: Asia/Tokyo
+test:
+  post:
+    - mv coverage $CIRCLE_ARTIFACTS
