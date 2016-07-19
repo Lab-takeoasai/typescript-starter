@@ -67,17 +67,16 @@ gulp.task('protractor', function (done) {
     .on('error', function (e) { throw e })
 });
 
+var gutil = require('gulp-util');
 var sass = require('gulp-sass');
 var sourcemaps = require('gulp-sourcemaps');
 var rename = require('gulp-rename');
 gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
-    .pipe(sourcemaps.init())
+    .pipe(process.env.ENV !== 'release' ? sourcemaps.init() : gutil.noop())
     .pipe(sass({outputStyle: 'compressed'}))
     .on('error', sass.logError)
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('./www/css/'))
-    .pipe(rename({ extname: '.min.css' }))
+    .pipe(process.env.ENV !== 'release' ? sourcemaps.write() : gutil.noop())
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
 });
@@ -98,7 +97,6 @@ gulp.task('run', ['webpack'], function () {
 
 var sh = require('shelljs');
 var bower = require('bower');
-var gutil = require('gulp-util');
 gulp.task('install', ['git-check'], function () {
   return bower.commands.install()
     .on('log', function (data) {
