@@ -11,7 +11,7 @@ import "./router";
 angular.module("starter", ["ionic", "ngCordova", "router", "starter.services"])
   .constant("apiUrl", "@@apiUrl")
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform: ionic.platform.IonicPlatformService) {
     "ngInject";
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
