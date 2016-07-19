@@ -16,7 +16,7 @@ machine:
   timezone: Asia/Tokyo
 test:
   pre:
-    - ionic serve:
+    - ionic serve
       background: true
     - sleep 5
   post:
