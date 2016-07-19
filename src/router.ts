@@ -4,8 +4,8 @@ import DashCtrl from "./dashboard/dashboard.controller";
 import AccountCtrl from "./account/account.controller";
 
 angular.module("router", ["ionic"])
-
-  .config(function ($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider: ng.ui.IStateProvider, $urlRouterProvider: ng.ui.IUrlRouterProvider) {
+    "ngInject";
 
     // Ionic uses AngularUI Router which uses the concept of states
     // Learn more here: https://github.com/angular-ui/ui-router

@@ -12,6 +12,7 @@ angular.module("starter", ["ionic", "ngCordova", "router", "starter.services"])
   .constant("apiUrl", "@@apiUrl")
 
   .run(function ($ionicPlatform) {
+    "ngInject";
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
