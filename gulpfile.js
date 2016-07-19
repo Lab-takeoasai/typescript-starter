@@ -68,16 +68,15 @@ gulp.task('protractor', function (done) {
 });
 
 var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
+var sourcemaps = require('gulp-sourcemaps');
 var rename = require('gulp-rename');
 gulp.task('sass', function (done) {
   gulp.src('./scss/ionic.app.scss')
-    .pipe(sass())
+    .pipe(sourcemaps.init())
+    .pipe(sass({outputStyle: 'compressed'}))
     .on('error', sass.logError)
+    .pipe(sourcemaps.write())
     .pipe(gulp.dest('./www/css/'))
-    .pipe(minifyCss({
-      keepSpecialComments: 0
-    }))
     .pipe(rename({ extname: '.min.css' }))
     .pipe(gulp.dest('./www/css/'))
     .on('end', done);
