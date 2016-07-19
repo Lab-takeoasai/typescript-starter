@@ -17,7 +17,7 @@ machine:
 test:
   pre:
     - ionic serve
-      background: true
+        background: true
     - sleep 5
   post:
     - mv coverage $CIRCLE_ARTIFACTS
