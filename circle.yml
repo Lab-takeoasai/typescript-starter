@@ -16,8 +16,11 @@ machine:
   timezone: Asia/Tokyo
 test:
   pre:
-    - ionic serve:
+    - ionic serve -a localhost -p 43274:
         background: true
-    - sleep 5
+    - sleep 10
   post:
     - mv coverage $CIRCLE_ARTIFACTS
+  override:
+    - ENV=release gulp build && ENV=release npm run test:unit
+    - ./node_modules/protractor/bin/protractor --baseUrl http://localhost:43274/ protractor.config.js
