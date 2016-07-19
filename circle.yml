@@ -20,4 +20,5 @@ deployment:
   master:
     branch: master
     commands:
+      - gulp build
       - bundle exec fastlane android beta
