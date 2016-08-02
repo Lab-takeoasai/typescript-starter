@@ -23,10 +23,9 @@ deployment:
       - gulp build
       - bundle exec fastlane android beta
 test:
-  pre:
+  override:
     - ionic serve --address 127.0.0.1 --port 14525:
         background: true
     - sleep 30
-  override:
     - npm test
     - gulp protractor
