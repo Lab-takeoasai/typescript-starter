@@ -1,6 +1,6 @@
 require('ts-node/register');
 exports.config = {
-  baseUrl: 'http://127.0.0.1:8100/',
+  baseUrl: 'http://127.0.0.1:14525/',
 
   specs: [
     'src/**/*.e2e.ts'
