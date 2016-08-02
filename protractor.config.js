@@ -1,6 +1,7 @@
 require('ts-node/register');
 exports.config = {
   baseUrl: 'http://127.0.0.1:14525/',
+  seleniumAddress: 'http://127.0.0.1:4723/wd/hub',
 
   specs: [
     'src/**/*.e2e.ts'
@@ -15,8 +16,9 @@ exports.config = {
 
   capabilities: {
     'browserName': 'chrome',
+    'deviceName' : 'Android Emulator',
     'chromeOptions': {
-      args: ['--disable-web-security']
+      args: ['--disable-web-security'],
     }
   },
 
