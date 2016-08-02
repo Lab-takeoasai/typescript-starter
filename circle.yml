@@ -24,7 +24,7 @@ deployment:
       - bundle exec fastlane android beta
 test:
   pre:
-    - cd www && python -m SimpleHTTPServer 8100:
+    - cd www && python -m SimpleHTTPServer 14525:
         background: true
     - sleep 5
   override:
