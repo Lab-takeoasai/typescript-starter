@@ -25,6 +25,7 @@ deployment:
 test:
   pre:
     - cd www && python -m SimpleHTTPServer 8100
+      background: true
     - sleep 5
   override:
     - gulp protractor
