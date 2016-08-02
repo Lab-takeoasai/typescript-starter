@@ -24,7 +24,7 @@ deployment:
       - bundle exec fastlane android beta
 test:
   pre:
-    - ionic serve:
+    - ionic serve --address 127.0.0.1:
         background: true
     - sleep 30
   override:
