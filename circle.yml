@@ -23,7 +23,8 @@ deployment:
       - gulp build
       - bundle exec fastlane android beta
 test:
+  pre:
+    - cd www && python -m SimpleHTTPServer 8100
+    - sleep 5
   override:
-    - screen -d -m -L ionic serve --address 127.0.0.1 --port 14525
-    - sleep 30
     - gulp protractor
