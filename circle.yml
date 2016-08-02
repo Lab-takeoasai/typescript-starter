@@ -22,3 +22,11 @@ deployment:
     commands:
       - gulp build
       - bundle exec fastlane android beta
+test:
+  pre:
+    - ionic serve:
+        background: true
+    - sleep 30
+  override:
+    - npm test
+    - gulp protractor
