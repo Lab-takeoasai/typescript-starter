@@ -24,6 +24,7 @@ deployment:
       - bundle exec fastlane android beta
 test:
   pre:
+    - gulp
     - npm install -g http-server
     - cd www && http-server -p 14525:
         background: true
