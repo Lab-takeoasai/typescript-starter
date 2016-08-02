@@ -24,6 +24,6 @@ deployment:
       - bundle exec fastlane android beta
 test:
   override:
-    - ionic serve --address 127.0.0.1 --port 14525:
-        background: true
+    - screen -d -m -L ionic serve --address 127.0.0.1 --port 14525
+    - sleep 30
     - gulp protractor
