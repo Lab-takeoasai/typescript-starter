@@ -6,7 +6,9 @@ dependencies:
   - sudo apt-get update
   - sudo apt-get --only-upgrade install google-chrome-stable
   - google-chrome --version
+  - npm set progress=false
   - npm install -g ionic
+  - npm install -g cordova
 machine:
   ruby:
     version: 2.3.1
