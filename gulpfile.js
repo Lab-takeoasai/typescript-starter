@@ -11,7 +11,6 @@ var paths = {
 gulp.task('default', ['sass', 'webpack']);
 gulp.task('watch', function () {
   gulp.watch(paths.sass, ['sass']);
-  gulp.watch(paths.typescript, ['webpack']);
 });
 
 var del = require('del');
@@ -45,6 +44,14 @@ gulp.task('replace', function () {
 
 var webpack = require('gulp-webpack');
 gulp.task('webpack', ['replace'], function () {
+  var config = require('./webpack.config.js');
+  config.watch = false;
+  gulp.src(paths.typescript)
+    .pipe(webpack(config))
+    .pipe(gulp.dest('./'));
+});
+var webpack = require('gulp-webpack');
+gulp.task('webpackWatch', ['replace'], function () {
   gulp.src(paths.typescript)
     .pipe(webpack(require('./webpack.config.js')))
     .pipe(gulp.dest('./'));
