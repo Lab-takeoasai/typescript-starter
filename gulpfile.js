@@ -62,7 +62,7 @@ var protractor = require("gulp-protractor").protractor;
 gulp.task('protractor', function (done) {
   gulp.src([])
     .pipe(protractor({
-      configFile: "./protractor.config.js"
+      configFile: "./config/protractor.config.js"
     }))
     .on('error', function (e) { throw e })
 });

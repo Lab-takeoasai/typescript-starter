@@ -30,7 +30,7 @@ test:
   pre:
     - gulp
     - npm install -g http-server
-    - cd www && http-server -p 14525:
+    - cd www && http-server -p 8100:
         background: true
     - sleep 5
   override:

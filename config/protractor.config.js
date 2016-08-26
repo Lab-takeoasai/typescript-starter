@@ -1,10 +1,10 @@
 require('ts-node/register');
 exports.config = {
-  baseUrl: 'http://127.0.0.1:14525/',
+  baseUrl: 'http://127.0.0.1:8100/',
   seleniumAddress: 'http://127.0.0.1:4723/wd/hub',
 
   specs: [
-    'src/**/*.e2e.ts'
+    '../src/**/*.e2e.ts'
   ],
   exclude: [],
 
