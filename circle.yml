@@ -17,9 +17,6 @@ machine:
   node:
     version: 5.7.0
   timezone: Asia/Tokyo
-test:
-  post:
-    - mv coverage $CIRCLE_ARTIFACTS
 deployment:
   master:
     branch: master
@@ -34,4 +31,5 @@ test:
         background: true
     - sleep 5
   override:
+    - npm test
     - gulp protractor
