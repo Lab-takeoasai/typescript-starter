@@ -4,6 +4,7 @@
   "gulpStartupTasks": [
     "default",
     "watch",
+    "webpackWatch",
     "karma"
   ],
   "watchPatterns": [
