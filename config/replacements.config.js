@@ -2,7 +2,7 @@ var version = '0.0.2';
 
 module.exports = {
   debug: [
-    { search: '@@apiUrl', replace: '/api/' },
+    { search: '@@apiUrl', replace: '/api?/' },
     { search: '@@xmlns:name', replace: 'AppDebug' },
     { search: '@@xmlns:access', replace: '*' },
     { search: '@@xmlns:allow-intent', replace: '*' },

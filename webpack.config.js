@@ -1,6 +1,6 @@
 var webpack = require("webpack");
 var path = require('path');
-var replacements = require('./replacements.config');
+var replacements = require('./config/replacements.config');
 var WebpackNotifierPlugin = require('webpack-notifier');
 module.exports = {
   entry: {

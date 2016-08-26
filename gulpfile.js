@@ -1,6 +1,6 @@
 var gulp = require('gulp');
-var replacements = require('./replacements.config');
-var proxies = require('./proxies.config');
+var replacements = require('./config/replacements.config');
+var proxies = require('./config/proxies.config');
 
 var paths = {
   sass: ['./scss/**/*.scss'],
