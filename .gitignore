@@ -10,6 +10,6 @@ plugins/
 coverage/
 docs/
 
-www/js/*.js
-www/js/*.map
+www/js/**/*.js
+www/js/**/*.map
 www/css/*.css
