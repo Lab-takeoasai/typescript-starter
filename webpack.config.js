@@ -4,16 +4,7 @@ var replacements = require('./replacements.config');
 var WebpackNotifierPlugin = require('webpack-notifier');
 module.exports = {
   entry: {
-    app: ['webpack-dev-server/client?http://localhost:8080', './src/app.ts']
-  },
-  devServer: {
-    contentBase: 'www',
-    port: 8080,
-    inline: true,
-    hot: false,
-    quiet: false,
-    noInfo: true,
-    stats: {colors: true}
+    app: ['./src/app.ts']
   },
   output: {
     filename: './www/js/[name].dist.js'
@@ -22,6 +13,7 @@ module.exports = {
     root: [path.join(__dirname, 'node_modules')],
     extensions: ['', '.ts', '.webpack.js', '.web.js', '.js']
   },
+  watch: true,
   devtool: (process.env.ENV === 'release') ? 'eval' : 'inline-source-map',
   module: {
     loaders: [
