@@ -53,7 +53,7 @@ gulp.task('webpack', ['replace'], function () {
 var Karma = require('karma').Server;
 gulp.task('karma', function (done) {
   new Karma({
-    configFile: __dirname + '/karma.conf.js',
+    configFile: __dirname + '/config/karma.conf.js',
     singleRun: false
   }).start();
 });
