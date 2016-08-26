@@ -26,6 +26,6 @@ exports.config = {
   },
 
   onPrepare: function() {
-    // browser.ignoreSynchronization = true;
+    browser.ignoreSynchronization = true;
   }
 };

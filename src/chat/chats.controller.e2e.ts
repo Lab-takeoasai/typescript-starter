@@ -11,6 +11,7 @@ describe("Chat controller ", () => {
   });
 
   it("'s title is 'Chats'", () => {
+    browser.sleep(2000);
     return browser.getTitle().then(title => {
       assert.equal(title, "Chats");
     });
