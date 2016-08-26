@@ -18,7 +18,6 @@
     "gulp-sass": "^2.0.4",
     "gulp-webpack": "^1.5.0",
     "gulp-xml-editor": "^2.2.1",
-    "karma-coverage": "^1.1.0",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.5.3",
     "ng-annotate-loader": "^0.1.0",
