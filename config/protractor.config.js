@@ -21,6 +21,9 @@ exports.config = {
       args: ['--disable-web-security'],
     }
   },
+  mochaOpts: {
+    timeout: 30000
+  },
 
   onPrepare: function() {
     // browser.ignoreSynchronization = true;
