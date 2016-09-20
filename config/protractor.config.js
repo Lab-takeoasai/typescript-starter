@@ -11,21 +11,30 @@ exports.config = {
   framework: 'mocha',
 
   allScriptsTimeout: 110000,
-
   directConnect: true,
 
   capabilities: {
     'browserName': 'chrome',
-    'deviceName' : 'Android Emulator',
+    'deviceName': 'Android Emulator',
     'chromeOptions': {
       args: ['--disable-web-security'],
     }
   },
+  /*
+    directConnect: false,
+  
+    capabilities: {
+      'browserName': 'safari',
+      'appium-version': '1.5.3',
+      'platformName': 'iOS',
+      'platformVersion': '9.3',
+      'deviceName': 'iPad Pro'
+    },*/
   mochaOpts: {
     timeout: 30000
   },
 
-  onPrepare: function() {
+  onPrepare: function () {
     browser.ignoreSynchronization = true;
   }
 };
