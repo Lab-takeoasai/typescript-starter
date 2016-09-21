@@ -1,5 +1,6 @@
+:EMOJI: Subject
 
-
+Body
 # ==== Emojis ====
 # 🐛  :bug: バグ修正
 # 👍  :+1: 機能改善
@@ -13,8 +14,3 @@
 # 🆙  :up: 依存パッケージなどのアップデート
 # 🔒  :lock: 新機能の公開範囲の制限
 # 👮  :cop: セキュリティ関連の改善
-
-# ==== Format ====
-# :emoji: Subject
-#
-# Commit body...
